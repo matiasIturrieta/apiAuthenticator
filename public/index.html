@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #response {
+            margin-top: 20px;
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Autenticación de Usuario</h2>
+    <textarea id="inputJson" placeholder='{"username": "", "password": ""}' rows="4" cols="50"></textarea><br>
+    <button id="registerBtn">Registro</button>
+    <button id="loginBtn">Login</button>
+    <button id="crearINC">Crear INC</button>
+    <div id="response" style="margin-top: 20px; font-size: 15px;"></div>
+
+    <script>
+        document.getElementById('registerBtn').addEventListener('click', function () {
+            const input = JSON.parse(document.getElementById('inputJson').value);
+            fetch('/registro', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(input),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('response').textContent = `Registro: ${JSON.stringify(data)}`;
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        });
+
+        document.getElementById('loginBtn').addEventListener('click', function () {
+            const input = JSON.parse(document.getElementById('inputJson').value);
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(input),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('response').textContent = `Login: ${JSON.stringify(data)}`;
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        });
+
+        document.getElementById('crearINC').addEventListener('click', function () {
+            const input = JSON.parse(document.getElementById('inputJson').value);
+            fetch('/CrearINC', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify(input),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('response').textContent = `Login: ${JSON.stringify(data)}`;
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        });
+        
+    </script>
+</body>
+
+</html>
