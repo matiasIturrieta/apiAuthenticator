@@ -19,7 +19,7 @@ app.post('/registro', async (req, res) => {
     const user = { username, password: hashedPassword };
     users.push(user);
 
-    res.status(201).send({ message: 'User created' });
+    res.status(201).send({ message: 'User created' ,PORT });
 });
 
 // Ruta de login
@@ -30,7 +30,7 @@ app.post('/login', async (req, res) => {
     if (user && await bcrypt.compare(password, user.password)) {
         // Generar un token
         const token = jwt.sign({ username: user.username }, 'secret', { expiresIn: '1h' });
-        res.status(200).send({ message: 'Authenticated', token });
+        res.status(200).send({ message: 'Authenticated', token , PORT });
     } else {
         res.status(400).send({ message: 'User or password is incorrect' });
     }
