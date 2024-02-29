@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 const users = [];
 const PORT = process.env.PORT || 80;
 
-app.post('/register', async (req, res) => {
+app.post('/registro', async (req, res) => {
     const { username, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
     
