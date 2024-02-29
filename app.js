@@ -70,7 +70,7 @@ app.post('/CrearINC', async (req, res) => {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
             // Aquí se configura la autenticación básica
-            'Authorization': 'Basic ' + Buffer.from(`${process.env.USER}:${process.env.PASSWORD}`).toString('base64')
+            'Authorization': 'Basic ' + Buffer.from(`${process.env.USERNAMEAPI}:${process.env.PASSWORDAPI}`).toString('base64')
         },
         data : incidentData,
         httpsAgent: httpsAgent
