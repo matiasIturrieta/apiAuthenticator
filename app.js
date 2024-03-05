@@ -22,7 +22,9 @@ const serviceRegion = process.env.SPEECH_REGION;
 
 //console.log("Transcribing from: " + filename);
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+//process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+const httpsAgent = new https.Agent({ rejectUnauthorized: false });
+
 
 var speechConfig = sdk.SpeechConfig.fromSubscription(subscriptionKey, serviceRegion);
 speechConfig.speechRecognitionLanguage = "es-MX";
@@ -37,7 +39,7 @@ const users = usuariosArray.reduce((obj, usuario, index) => {
   return obj;
 }, {});
 
-const httpsAgent = new https.Agent({ rejectUnauthorized: false });
+
 
 async function handleCrearINC(incidentData, res) {
     const config = {
