@@ -18,11 +18,9 @@ app.use(express.static('public'));
 const PORT = process.env.PORT || 448;
 const subscriptionKey = process.env.SPEECH_KEY;
 const serviceRegion = process.env.SPEECH_REGION;
-const filename = process.env.FILE_NAME_LOCAL;
+//const filename = process.env.FILE_NAME_LOCAL;
 
-console.log("Transcribing from: " + filename);
-
-let testBuffer = fs.readFileSync(filename);
+//console.log("Transcribing from: " + filename);
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
