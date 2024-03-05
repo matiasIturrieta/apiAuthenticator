@@ -23,7 +23,6 @@ const filename = process.env.FILE_NAME_LOCAL;
 console.log("Transcribing from: " + filename);
 
 let testBuffer = fs.readFileSync(filename);
-console.log(testBuffer);
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
@@ -39,8 +38,6 @@ const users = usuariosArray.reduce((obj, usuario, index) => {
   obj[usuario] = passwordsArray[index];
   return obj;
 }, {});
-
-console.log(users);
 
 const httpsAgent = new https.Agent({ rejectUnauthorized: false });
 
