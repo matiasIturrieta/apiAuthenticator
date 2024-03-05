@@ -30,8 +30,8 @@ var speechConfig = sdk.SpeechConfig.fromSubscription(subscriptionKey, serviceReg
 speechConfig.speechRecognitionLanguage = "es-MX";
 
 
-const usuariosArray =  process.env.ArrUsuarios.split(',');
-const passwordsArray = process.env.ArrPassword.split(',');
+const usuariosArray =  process.env.ARRUSUARIOS.split(',');
+const passwordsArray = process.env.ARRPASSWORD.split(',');
 
 // Crea un objeto que mapee usuarios a contraseñas
 const users = usuariosArray.reduce((obj, usuario, index) => {
